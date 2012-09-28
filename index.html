@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <title>Test stuff</title>
+</head>
+
+<body>
+
+    <h1> Hey there </h1>
+    <!-- Scripts -->
+    <script src="js/jquery-1.8.2.js"></script>
+    <!--For some reason, my GET requests aren't tripping Chrome's X-domain security check. Huh. 
+    <script src="js/jquery.jsonp.js"></script-->
+
+    <!-- Handlebars -->
+    <script src="js/handlebars.js"></script>
+
+    <!-- Load templates -->
+    <!-- Precompile templates -->
+    <script>
+        var articleTemplate = Handlebars.compile($("#articleTemplate").html());
+
+        var hello = $.getJSON("http://api.feedzilla.com/v1/categories/26/articles.json");
+    </script>
+
+
+</body>
+
+
+</html>
