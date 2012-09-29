@@ -1,3 +1,10 @@
+/*****************************************
+ *     Handlebars object wrapper
+ *     v 0.0.1
+ *     Salem Hilal
+ *****************************************/
+
+
     function Template(){};
         Template.prototype.source   = "";
         Template.prototype.template = null;
@@ -11,7 +18,23 @@
                 async: false,
                 success: function(data){
                     current.source = data;
-                    current.template = Handlebars.compile(source);
+                    current.template = Handlebars.compile(current.source);
+                }
+            });
+        }
+
+        //Initializes the template from a path asynchronously. 
+        //Passes the initialized Template object to the callback function.
+        Template.prototype.init = function(path, callback){
+            var current = this;
+            $.ajax({
+                url: path,
+                cache: true,
+                async: true,
+                success: function(data){
+                    current.source = data;
+                    current.template = Handlebars.compile(current.source);
+                    callback(current);
                 }
             });
         }
