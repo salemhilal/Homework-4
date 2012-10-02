@@ -4,6 +4,8 @@
  *     Salem Hilal
  *****************************************/
 
+    //TODO: Multiple templates in one file.
+
     //Ye olde constructor. 
     //  @path :     The path to your template. Should be a string, but you know. It's javascript. Go nuts. 
     //  @context:   If defined, gives template some context.
@@ -30,7 +32,8 @@
             }
             else{
                 current.init(path);
-                callback(this);
+                if(typeof callback === "function")
+                    callback(this);
             }
         }
     };
@@ -45,7 +48,7 @@
             var current = this;
             $.ajax({
                 url: path,
-                cache: true,
+                cache: false,
                 async: false,
                 success: function(data){
                     current.source = data;
@@ -60,7 +63,7 @@
             var current = this;
             $.ajax({
                 url: path,
-                cache: true,
+                cache: false,
                 async: true,
                 success: function(data){
                     current.source = data;

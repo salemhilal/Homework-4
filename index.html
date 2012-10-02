@@ -6,25 +6,19 @@
 
 <body>
 
-    <h1> Hey there </h1>
+    <h1> Dat news </h1>    
+    <div id="articles"></div>
+
+
     <!-- Scripts -->
     <script src="js/jquery-1.8.2.js"></script>
     <!--For some reason, my GET requests aren't tripping Chrome's X-domain security check. Huh. 
     <script src="js/jquery.jsonp.js"></script-->
 
-    <!-- Handlebars -->
+    <!-- Facial Hair/Templating -->
     <script src="js/handlebars.js"></script>
-    <script src="js/handlebars-wrapper.js"></script>
-
-    <!-- Load templates -->
-    <script>
-        var articleTemplate = Handlebars.compile($("#articleTemplate").html());
-
-        var hello = $.getJSON("http://api.feedzilla.com/v1/categories/26/articles.json");
-    </script>
-
-    <div class="sideburns"></div>
-
+    <script src="js/sideburns.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
 
