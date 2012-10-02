@@ -1,3 +1,4 @@
+mongoose.conf
 *.sublime-project
 *.exe
 *.sublime-workspace
