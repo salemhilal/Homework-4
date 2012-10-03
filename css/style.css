@@ -1,0 +1,13 @@
+.article {
+    width: 300px;
+    height: 500px;
+    overflow: scroll;
+}
+
+::-webkit-scrollbar              { display:none }
+::-webkit-scrollbar-button       { display:none }
+::-webkit-scrollbar-track        { display:none }
+::-webkit-scrollbar-track-piece  { display:none }
+::-webkit-scrollbar-thumb        { display:none }
+::-webkit-scrollbar-corner       { display:none }
+::-webkit-resizer                { display:none }
