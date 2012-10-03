@@ -1,13 +1,151 @@
 .article {
-    width: 300px;
-    height: 500px;
-    overflow: scroll;
+	background-color: #FFFFFF;
+	margin: 5px 5px 5px 5px;
+	padding: 5px 5px 5px 5px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+    font-family: Georgia,Utopia,Charter,serif;
+    width:350px;
+    height:auto;
+    text-align:justify;
+    text-justify:inter-word;
 }
 
-::-webkit-scrollbar              { display:none }
-::-webkit-scrollbar-button       { display:none }
-::-webkit-scrollbar-track        { display:none }
-::-webkit-scrollbar-track-piece  { display:none }
-::-webkit-scrollbar-thumb        { display:none }
-::-webkit-scrollbar-corner       { display:none }
-::-webkit-resizer                { display:none }
+.logo {
+	position: relative;
+	padding: 10px 10px 10px 10px;
+	text-align: right;
+	font-size: 20px;
+	position: fixed;
+	font-family: Georgia,Utopia,Charter,serif;
+	font-variant: oblique; 
+	text-transform:uppercase;
+	z-index: 10000;
+	color: #FFFFFF;
+}
+
+
+.header {
+	position: fixed;
+	padding: 10px 10px 10px 10px;
+	height: 30px;
+	text-align: right;
+	font-size: 20px;
+	position: fixed;
+	font-family: Georgia,Utopia,Charter,serif; 
+	text-transform:uppercase;
+	z-index: 10000;
+	color: #FFFFFF;
+	background-color: #000000;
+}
+
+
+
+
+.large{
+	text-transform:uppercase;
+	font-size: 40px;
+}
+
+.container{
+	width: 1200px;
+	text-align: center;
+
+}
+
+.date {
+	font-size: 12px;
+	font-style: normal;
+}
+
+
+.title {
+	font-size: 22px;
+	line-height: 110%;
+	text-decoration: none;
+	text-align:left;
+    text-justify:inter-word;
+
+}
+.source {
+	text-align: left;
+	font-style: bold; 
+}
+
+.article a:link {color:#000000; text-decoration: none;}      /* unvisited link */
+.article a:visited {color:#000000; text-decoration: none;}  /* visited link */
+.article a:hover {color:#000000; text-decoration: none;}  /* mouse over link */
+.article a:active {color:#000000; text-decoration: none;}
+
+a:link {color: #000000; text-decoration: underline; }
+a:active {color: #000000; text-decoration: underline; }
+a:visited {color: #008000; text-decoration: underline; }
+a:hover {color: #000000; text-decoration: none; }
+
+
+::-webkit-scrollbar              { visibility:hidden }
+::-webkit-scrollbar-button       { visibility:hidden }
+::-webkit-scrollbar-track        { visibility:hidden }
+::-webkit-scrollbar-track-piece  { visibility:hidden }
+::-webkit-scrollbar-thumb        { visibility:hidden }
+::-webkit-scrollbar-corner       { visibility:hidden }
+::-webkit-resizer                { visibility:hidden }
+
+::-moz-scrollbar              { visibility:hidden; }
+::-moz-scrollbar-button       { visibility:hidden; }
+::-moz-scrollbar-track        { visibility:hidden; }
+::-moz-scrollbar-track-piece  { visibility:hidden; }
+::-moz-scrollbar-thumb        { visibility:hidden; }
+::-moz-scrollbar-corner       { visibility:hidden; }
+::-moz-resizer                { visibility:hidden; }
+
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}

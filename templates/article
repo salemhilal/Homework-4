@@ -1,4 +1,12 @@
-<div class="article">
-    <h3><a href={{url}}> {{title}} </a> <small>{{source}}</small></h3>
-    <p>{{summary}}</p>
+<div class="article" data="{{isotope_tags}}">
+    <h3 class="title large"> 
+    	<a class="title large" href="{{url}}"> {{title}} </a> 
+    </h3>
+    <h5 class="source"> 
+	    published by {{source}} 
+	    <br> 
+	    <div class="date" > on {{date_string}} </div> 
+    </h5>
+    <p class="summary"> {{summary}} </p>
+
 </div>

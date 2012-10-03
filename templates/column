@@ -1,0 +1,12 @@
+<div class="article">
+    <h3 class="title"> 
+    	<a class="title" href={{url}}> {{title}} </a> 
+    </h3>
+    <h5 class="source"> 
+	    Published by {{source}} 
+	    <br> 
+	    <div class="date" > on {{publish_date}} </div> 
+    </h5>
+    <p class="summary"> {{summary}} </p>
+    
+</div>

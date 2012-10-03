@@ -6,16 +6,35 @@
     <title>Test stuff</title>
 
     <!-- Style -->
+    <link href='http://fonts.googleapis.com/css?family=Arbutus+Slab' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/filtrify.css" />
 </head>
 
 <body>
 
-    <h1> Dat dopest news <small>cuz that's whassup</small></h1>   
+    
+    
+       
     <div class="container">
-        <div class="row">
-            <div class="twelve columns">
+        <div class="row-fluid header">
+            <div class="span2">
+                <div class="logo"> The Daily Bean</div>
+
+            </div>
+
+            <div class="span3">
+                <form class="form-inline">
+                  <input type="text" id="filter" class="input" placeholder="Filter">
+                  <button class="btn btn-small" onclick="filter()"> <i class="icon-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div id="placeHolder"></div>
                 <div id="articles"></div>
             </div>
         </div>
@@ -34,6 +53,7 @@
     <!-- Facial Hair/Templating -->
     <script type="text/javascript" src="js/handlebars.js"></script>
     <script type="text/javascript" src="js/sideburns.js"></script>
+    <script type="text/javascript" src="js/filtrify.min.js"></script>
     
     <!-- Meat and Potatoes -->
     <script type="text/javascript" src="js/app.js"></script>
