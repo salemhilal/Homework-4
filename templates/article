@@ -1,6 +1,6 @@
-<div class="article" data="{{isotope_tags}}">
+<div class="article {{isotope_tags}}">
     <h3 class="title large"> 
-    	<a class="title large" href="{{url}}"> {{title}} </a> 
+    	<a class="title large" href="{{source_url}}"> {{title}} </a> 
     </h3>
     <h5 class="source"> 
 	    published by {{source}} 
