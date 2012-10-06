@@ -16,7 +16,7 @@ $(document).ready(function(){
     }
 
 
-    var pages = ["#usa", "#world", "#sports", "business", "technology"];
+    var pages = ["#usa", "#world", "#sports", "#business", "#technology"];
     var currentPage = 0;
 
 
