@@ -73,6 +73,17 @@
             });
         }
 
+        //Returns a dom element. 
+        Template.prototype.build = function(context){
+            if(this.template == null)
+                console.error("Can't render: Template is null.");
+            else{
+                if(context == null) context = this.context;
+                else this.context = context;
+                return this.template(context);
+            }
+        }
+
         //Renders the template in the first item selected by @selector
         Template.prototype.render = function(context, selector){
             if(this.template == null)
