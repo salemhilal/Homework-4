@@ -27,7 +27,7 @@
 .header {
 	position: fixed;
 	padding: 10px 10px 10px 10px;
-	height: 30px;
+	height: 40px;
 	text-align: right;
 	font-size: 20px;
 	position: fixed;
@@ -36,9 +36,12 @@
 	z-index: 10000;
 	color: #FFFFFF;
 	background-color: #000000;
+    box-shadow: 0 2px 5px #333;
 }
 
-
+.contentWrapper{
+    background-color:white;
+}
 
 
 .large{
@@ -69,6 +72,9 @@
 .source {
 	text-align: left;
 	font-style: bold; 
+}
+.container{
+    margin-top: 60px;
 }
 
 .article a:link {color:#000000; text-decoration: none;}      /* unvisited link */
@@ -232,31 +238,9 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
     background:#444;
 }
 
+section{
+    background-image: url(../img/purty_wood.png);
+    /*background-image: url(../img/panel_wood.png);*/
+    /*background-image: url(../img/dark_wood.png);*/
 
-#ascensorFloor1{
-    background: #F9B233;    
-}
-
-#ascensorFloor2{
-    background: #71B5E5;    
-}
-
-#ascensorFloor3{
-    background: #B3CE4A;    
-}
-
-#ascensorFloor4{
-    background: #EB5D45;    
-}
-
-#ascensorFloor5{
-    background: #4AAEB6;    
-}
-
-#ascensorFloor6{
-    background: #E7DFBF;    
-}
-
-#ascensorFloor7{
-    background: #CA9E67;    
 }
