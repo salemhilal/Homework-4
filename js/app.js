@@ -1,8 +1,27 @@
 
 $(document).ready(function(){
+
+    console.log("Lets load some ascensor.");
+    $('#ascensorBuilding').ascensor({
+        AscensorName:'ascensor',
+        ChildType:'section',
+        AscensorFloorName:'Top Stories | Page 2 | Page 3 | Page 4',
+        Time:1000,
+        WindowsOn:1,
+        Direction:'x',
+        Easing:'easeInOutCubic',
+
+        KeyNavigation:true
+    });
+    $("body").css("display","block");        
+
+
     $.getJSON("http://api.feedzilla.com/v1/categories/26/articles.json", function(data){
 
+
+
         var articleTemplate = new Template("/templates/article");
+
 
         data.articles.forEach(function(c){
             articleTemplate.append(processArticle(c), "#articles");
