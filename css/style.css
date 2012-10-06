@@ -1,26 +1,39 @@
+.newspaper-title{
+  font-family: Georgia;
+  font-size: 52px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #333333;
+}
+
+.hidden{
+  visibility: hidden;
+  height:0;
+}
+
 .article {
-	background-color: #FFFFFF;
-	margin: 5px 5px 5px 5px;
-	padding: 5px 5px 5px 5px;
-	overflow: hidden;
-    font-family: Georgia,Utopia,Charter,serif;
-    width:350px;
-    height:auto;
-    text-align:justify;
-    text-justify:inter-word;
+  background-color: #EEEEEE;
+  margin: 5px 5px 5px 5px;
+  padding: 10px 10px 10px 10px;
+  overflow: hidden;
+  font-family: Georgia,Utopia,Charter,serif;
+  width:350px;
+  text-align:justify;
+  text-justify:inter-word;
 }
 
 .logo {
 	position: relative;
 	padding: 10px 10px 10px 10px;
 	text-align: right;
-	font-size: 20px;
+	font-size: 24px;
 	position: fixed;
 	font-family: Georgia,Utopia,Charter,serif;
 	font-variant: oblique; 
 	text-transform:uppercase;
 	z-index: 10000;
-	color: #FFFFFF;
+	color: #010101;
 }
 
 
@@ -35,7 +48,7 @@
 	text-transform:uppercase;
 	z-index: 10000;
 	color: #FFFFFF;
-	background-color: #000000;
+	background-color: #FFFFFF;
     box-shadow: 0 2px 5px #333;
 }
 
@@ -66,7 +79,7 @@
 	line-height: 110%;
 	text-decoration: none;
 	text-align:left;
-    text-justify:inter-word;
+  text-justify:inter-word;
 
 }
 .source {
@@ -155,9 +168,6 @@ a:hover {color: #000000; text-decoration: none; }
           transition-duration: 0s;
 }
 
-
-
-
 body { 
     display: none;
     margin: 0; 
@@ -174,7 +184,6 @@ body {
 
 section{
     overflow:auto;
-    box-shadow: inset 0 0 0px 5px rgb(0,0,0);
 }
 
 section article{
@@ -187,7 +196,7 @@ section article{
     position: fixed;
     right:60px;
     bottom:50px;
-    width: 100px;
+    width: 140px;
     padding:10px;
     height:10px;
     z-index: 999;
@@ -239,8 +248,5 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 }
 
 section{
-    background-image: url(../img/purty_wood.png);
-    /*background-image: url(../img/panel_wood.png);*/
-    /*background-image: url(../img/dark_wood.png);*/
-
+ background-color: #ffffff;
 }

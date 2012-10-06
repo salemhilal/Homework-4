@@ -1,6 +1,6 @@
-<div class="article" data="{{isotope_tags}}">
+<div class="article {{isotope_tags}}">
     <h3 class="title large"> 
-    	<a class="title large" href="{{url}}"> {{title}} </a> 
+    	{{title}}
     </h3>
     <h5 class="source"> 
 	    published by {{source}} 
@@ -8,5 +8,6 @@
 	    <div class="date" > on {{date_string}} </div> 
     </h5>
     <p class="summary"> {{summary}} </p>
+    <p class="content hidden"> {{content}} </p>
 
 </div>
