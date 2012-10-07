@@ -3,16 +3,26 @@ $(document).ready(function(){
     //Vars
         var rssList = {
             "#usa":["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/US.xml"],
-
             "#world":["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/World.xml"],
-
             "#sports":["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/Sports.xml"],
-
             "#business":["http://fulltextrssfeed.com/feeds.nytimes.com/nyt/rss/Business"],
-
             "#technology":["http://fulltextrssfeed.com/feeds.nytimes.com/nyt/rss/Technology"]
         };
         var pages = ["#usa", "#world", "#sports", "#business", "#technology"];
+        var goodToGo = {
+            "#usa":         false,
+            "#world":       false,
+            "#sports":      false,
+            "#business":    false,
+            "#technology":  false
+        };
+        
+        //For filter 
+        var typingTimer; 
+        var doneTypingInterval = 500;    
+        var currentPage = 0;
+        var sideburnTemplate = null;
+
 
 
 
@@ -69,43 +79,69 @@ $(document).ready(function(){
         console.log("feed");
         console.log(feed);
         var articles = new Array();
-        var sideburnTemplate = new Template("/templates/article", null, null, null, function(template){
+        if(sideburnTemplate === null){
+            sideburnTemplate = new Template("/templates/article", null, null, null, function(template){
+                for (var i = 0; i < feed.entries.length; i++){
+
+                    //Article Data
+                    var article = {
+                        content:        feed.entries[i].content.replace(/(<([^>]+)>)/ig,""),
+                        title:          parseTitle(feed.entries[i].title),
+                        images:         extractImages(feed.entries[i].content),
+                        isotope_tags:   extractKeywords(feed.entries[i].title),
+                        author:         feed.entries.author, 
+                        publish_date:   Date.parse(feed.entries[i].publishedDate),
+                        date_string:    feed.entries[i].publishedDate,
+                        summary:        feed.entries[i].contentSnippet.replace(/(<([^>]+)>)/ig,"")
+                    }
+                    var newArticle = template.build(article);
+                    $(isotope_page).append($(newArticle))/*.isotope("insert", $(newArticle), callback())*/;
+                }
+                callback();
+
+            }); 
+        } else{
             for (var i = 0; i < feed.entries.length; i++){
 
-                //Article Data
-                var article = {
-                    content:        feed.entries[i].content.replace(/(<([^>]+)>)/ig,""),
-                    title:          parseTitle(feed.entries[i].title),
-                    images:         extractImages(feed.entries[i].content),
-                    isotope_tags:   extractKeywords(feed.entries[i].title),
-                    author:         feed.entries.author, 
-                    publish_date:   Date.parse(feed.entries[i].publishedDate),
-                    date_string:    feed.entries[i].publishedDate,
-                    summary:        feed.entries[i].contentSnippet.replace(/(<([^>]+)>)/ig,"")
-                }
-                var newArticle = template.build(article);
-                console.log("Newly generated article to be added to " + isotope_page);
-                console.log(newArticle);
-                $(isotope_page).append($(newArticle))/*.isotope("insert", $(newArticle), callback())*/;
-                callback();
+                    //Article Data
+                    var article = {
+                        content:        feed.entries[i].content.replace(/(<([^>]+)>)/ig,""),
+                        title:          parseTitle(feed.entries[i].title),
+                        images:         extractImages(feed.entries[i].content),
+                        isotope_tags:   extractKeywords(feed.entries[i].title),
+                        author:         feed.entries.author, 
+                        publish_date:   Date.parse(feed.entries[i].publishedDate),
+                        date_string:    feed.entries[i].publishedDate,
+                        summary:        feed.entries[i].contentSnippet.replace(/(<([^>]+)>)/ig,"")
+                    }
+                    var newArticle = sideburnTemplate.build(article);
+                    $(isotope_page).append($(newArticle))/*.isotope("insert", $(newArticle), callback())*/;
             }
-            
-        }); 
+            callback();
+
+        }
     }
 
-    function initPrototype(){
-        pages.forEach(function(page){
-            $(page).isotope({
-                itemSelector :'.article',
-                layoutMode : 'masonry'
-            });
+    function initIsotope(page){
+        $(page).isotope({
+            itemSelector :'.article',
+            layoutMode : 'masonry',
+            animationOptions: {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+            }
+        }, function( $items ) {
+          var id = this.attr('id'),
+              len = $items.length;
+          console.log( 'Isotope has filtered for ' + len + ' items in #' + id );
         });
     }
 
 
     //Given a page, a list of feeds, and an index, fill the page with data from the ith feed.
     function makeTheCalls(page, feeds, i){
-        if(i >= feeds.length) initPrototype();
+        if(i === feeds.length) goodToGo[page] = true;
         else{
             $.ajax({
                 url:        "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=" + encodeURIComponent(feeds[i]),
@@ -158,16 +194,25 @@ $(document).ready(function(){
     }
 
     //Initialize each isotope
-    pages.forEach(function(page){/*
-        $(page).isotope({
-                itemSelector :'.article',
-                layoutMode : 'masonry'
-        }, function (){
-            //Parse through each feed recursively and append the articles to isotope. 
-            makeTheCalls(page, rssList[page], 0); 
-        }); */
+    pages.forEach(function(page){
         makeTheCalls(page, rssList[page], 0);
     });
+
+    var checkIfLoaded = setInterval(function(){
+        function renderTime(){
+            for(page in goodToGo){
+                if(goodToGo[page] === false) return false;
+            }
+            return true;
+        }
+
+        if(renderTime()){
+            pages.forEach(function(page){
+                initIsotope(page);
+            });
+        }
+    }, 100);
+
 
     //Show Body
     $("body").css("display","block");
