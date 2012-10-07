@@ -222,7 +222,7 @@ $(document).ready(function(){
                     setTimeout(function(){
                         $("#navigationMap").slideDown();
                     },500)
-                }, 1000);
+                }, 2000);
             });
             clearTimeout(checkIfLoaded);
         }
