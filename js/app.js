@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    $("#navigationMap").hide();
     //Vars
         var rssList = {
             "#usa":         ["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/US.xml",
@@ -217,6 +217,12 @@ $(document).ready(function(){
             pages.forEach(function(page){
                 initIsotope(page);
                 $(page).isotope('shuffle');
+                setTimeout(function(){
+                    $("#splashScreen").slideUp();
+                    setTimeout(function(){
+                        $("#navigationMap").slideDown();
+                    },500)
+                }, 1000);
             });
             clearTimeout(checkIfLoaded);
         }
