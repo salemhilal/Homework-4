@@ -121,6 +121,7 @@ $(document).ready(function(){
                         date_string:    feed.entries[i].publishedDate,
                         summary:        feed.entries[i].contentSnippet.replace(/(<([^>]+)>)/ig,"")
                     }
+                    console.log(article.images);
                     var newArticle = sideburnTemplate.build(article);
                     $(isotope_page).append($(newArticle))/*.isotope("insert", $(newArticle), callback())*/;
             }

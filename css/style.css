@@ -95,6 +95,12 @@
 .article a:hover {color:#000000; text-decoration: none;}  /* mouse over link */
 .article a:active {color:#000000; text-decoration: none;}
 
+.article img{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 a:link {color: #000000; text-decoration: underline; }
 a:active {color: #000000; text-decoration: underline; }
 a:visited {color: #008000; text-decoration: underline; }
