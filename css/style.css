@@ -8,11 +8,21 @@
 }
 
 .hidden{
-    visibility: hidden;
-    height:0;
+    display: none;
+}
+
+.activeArticle{
+  -webkit-transition: width 1s ease-in-out 0s;
+     -moz-transition: width 1s ease-in-out 0s;
+          transition: width 1s ease-in-out 0s;
+  width: 100% !important;
 }
 
 .article {
+    -webkit-transition: all 1s ease-in-out 0s;
+       -moz-transition: all 1s ease-in-out 0s;
+            transition: all 1s ease-in-out 0s;
+
     background-color: #EEEEEE;
     margin: 5px 5px 5px 5px;
     padding: 10px 10px 10px 10px;
@@ -242,7 +252,7 @@ section{
 }
 
 #splashScreen{
-    
+
 }
 
 #splashCanvas{
@@ -254,9 +264,22 @@ section{
 
 #titleOverlay{
     position:absolute;
-    top:0;
-    left:0;
+    top:100px;
+    left:100px;
+    color: #333;    
+    font-family: Georgia,Utopia,Charter,serif;
+    font-size: 72px;
     margin-left: auto;
     margin-right: auto;
     z-index: 2000;
+}
+
+#credits{
+    color: #777;
+    font-size: 24px;
+}
+
+#filterBar{
+    align:right; 
+    margin-right: 30px;
 }

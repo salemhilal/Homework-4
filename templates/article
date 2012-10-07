@@ -3,8 +3,6 @@
     	{{title}}
     </h3>
     <h5 class="source"> 
-	    published by {{source}} 
-	    <br> 
 	    <div class="date" > on {{date_string}} </div> 
     </h5>
     {{{images}}}

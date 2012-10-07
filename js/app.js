@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    $("titleOverlay").fadeIn();
+
     $("#navigationMap").hide();
     //Vars
         var rssList = {
@@ -98,7 +100,7 @@ $(document).ready(function(){
                         summary:        feed.entries[i].contentSnippet.replace(/(<([^>]+)>)/ig,"")
                     }
                     var newArticle = template.build(article);
-                    if(article.title.indexOf("Sponsored") === -1)
+                    if(article.title.toLowerCase().indexOf("sponsored") === -1)
                         $(isotope_page).append($(newArticle));
                 }
                 callback();
@@ -211,14 +213,33 @@ $(document).ready(function(){
 
         //Looks like the data's all ready
         if(renderTime()){
+            //Add article expanders
+            $(".article").find("img").filter(function(){
+                if($(this).height() < 150) 
+                    return true;
+                else 
+                    return false;
+            }).hide();
 
-            //TODO: Remove splash canvas.
+            $(".article").click(function(){
+                $(".article").each(function(i,e){
+                    $(e).find(".summary").slideDown(200); 
+                    $(e).find(".content").slideUp(200);
+                });
+
+                $(this).find(".summary").slideUp(250); 
+                $(this).find(".content").slideDown(300, reLayout);
+    
+
+                
+            });
 
             pages.forEach(function(page){
                 initIsotope(page);
                 $(page).isotope('shuffle');
                 setTimeout(function(){
-                    $("#splashScreen").slideUp();
+                    $("#splashScreen, #splashCanvas").slideUp();
+                    $("#titleOverlay").animate({"top": "-200px"}, "slow")
                     setTimeout(function(){
                         $("#navigationMap").slideDown();
                     },500)
@@ -228,6 +249,12 @@ $(document).ready(function(){
         }
     }, 100);
 
+
+    function reLayout(){
+        pages.forEach(function(page){
+            $(page).isotope('reLayout');
+        })
+    }
 
     //Show Body
     $("body").css("display","block");
