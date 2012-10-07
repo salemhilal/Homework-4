@@ -1,5 +1,18 @@
 $(document).ready(function(){
     $("titleOverlay").fadeIn();
+    var canvas = document.getElementById("splashCanvas");
+    var ctx = canvas.getContext("2d");
+
+    var i = 150;
+    var canv = setInterval(function(){
+        console.log(i);
+        if (i >= 255) i = 255;
+        var fillString = "rgb("+i+","+i+","+i+")"
+        ctx.fillStyle = fillString;
+        ctx.fillRect(0,0, 1000,1000);
+        i = i + 20;
+    }, 40);
+
 
     $("#navigationMap").hide();
     //Vars
@@ -245,6 +258,7 @@ $(document).ready(function(){
                     },500)
                 }, 2000);
             });
+            clearTimeout(canv);
             clearTimeout(checkIfLoaded);
         }
     }, 100);
