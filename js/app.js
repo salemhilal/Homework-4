@@ -81,8 +81,6 @@ $(document).ready(function(){
     function processFeed(feed, isotope_page, callback){
         feed = feed.responseData.feed;
         var entries = feed.entries;
-        console.log("feed");
-        console.log(feed);
         var articles = new Array();
         if(sideburnTemplate === null){
             sideburnTemplate = new Template("/templates/article", null, null, null, function(template){
@@ -99,7 +97,6 @@ $(document).ready(function(){
                         date_string:    feed.entries[i].publishedDate,
                         summary:        feed.entries[i].contentSnippet.replace(/(<([^>]+)>)/ig,"")
                     }
-                    console.log(article.title);
                     var newArticle = template.build(article);
                     if(article.title.indexOf("Sponsored") === -1)
                         $(isotope_page).append($(newArticle));
@@ -121,7 +118,6 @@ $(document).ready(function(){
                         date_string:    feed.entries[i].publishedDate,
                         summary:        feed.entries[i].contentSnippet.replace(/(<([^>]+)>)/ig,"")
                     }
-                    console.log(article.images);
                     var newArticle = sideburnTemplate.build(article);
                     $(isotope_page).append($(newArticle))/*.isotope("insert", $(newArticle), callback())*/;
             }
@@ -156,8 +152,6 @@ $(document).ready(function(){
                 url:        "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=" + encodeURIComponent(feeds[i]),
                 dataType:   "json",
                 success: function(data){
-                    console.log("The data from " + feeds[i] + ":");
-                    console.log(data);
                     //Populate isotope here
                     processFeed(data, page, function(){
                         makeTheCalls(page, feeds, (i+1));    
