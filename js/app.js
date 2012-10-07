@@ -2,12 +2,16 @@ $(document).ready(function(){
 
     //Vars
         var rssList = {
-            "#usa":["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/US.xml",
-                    "http://fulltextrssfeed.com/rss.cnn.com/rss/cnn_topstories.rss"],
-            "#world":["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/World.xml"],
-            "#sports":["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/Sports.xml"],
-            "#business":["http://fulltextrssfeed.com/feeds.nytimes.com/nyt/rss/Business"],
-            "#technology":["http://fulltextrssfeed.com/feeds.nytimes.com/nyt/rss/Technology"]
+            "#usa":         ["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/US.xml",
+                             "http://fulltextrssfeed.com/pheedo.msnbc.msn.com/id/3032091/device/rss"],
+            "#world":       ["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/World.xml",
+                             "http://rss.msnbc.msn.com/id/3032506/device/rss/rss.xml"],
+            "#sports":      ["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/Sports.xml",
+                             "http://fulltextrssfeed.com/rss.nbcsports.msnbc.com/id/3032112/device/rss/rss.xml#__utma=238145375.1711211286.1349570710.1349570710.1349570710.1&__utmb=238145375.4.10.1349570710&__utmc=238145375&__utmx=-&__utmz=238145375.1349570710.1.1.utmcsr=nbcnews.com|utmccn=(referral)|utmcmd=referral|utmcct=/&__utmv=238145375.|8=Earned%20By=msnbc%7C=1^12=Landing%20Content=Mixed=1^13=Landing%20Hostname=www.msnbc.msn.com=1^30=Visit%20Type%20to%20Content=Internal%20to%20Mixed=1&__utmk=170102499"],
+            "#business":    ["http://fulltextrssfeed.com/feeds.nytimes.com/nyt/rss/Business",
+                             "http://fulltextrssfeed.com/rss.msnbc.msn.com/id/3032071/device/rss/rss.xml"],
+            "#technology":  ["http://fulltextrssfeed.com/feeds.nytimes.com/nyt/rss/Technology",
+                             "http://fulltextrssfeed.com/pheedo.msnbc.msn.com/id/3033117/device/rss/"]
         };
         var pages = ["#usa", "#world", "#sports", "#business", "#technology"];
         var goodToGo = {
@@ -67,7 +71,7 @@ $(document).ready(function(){
     function extractImages(html){
         var regex = /<img[^>]*>/g; 
         var img = html.match(regex);
-        if (img != []){
+        if (img != [] && img != null){
             return img[0]
         }
         else {return "";}
@@ -95,8 +99,10 @@ $(document).ready(function(){
                         date_string:    feed.entries[i].publishedDate,
                         summary:        feed.entries[i].contentSnippet.replace(/(<([^>]+)>)/ig,"")
                     }
+                    console.log(article.title);
                     var newArticle = template.build(article);
-                    $(isotope_page).append($(newArticle))/*.isotope("insert", $(newArticle), callback())*/;
+                    if(article.title.indexOf("Sponsored") === -1)
+                        $(isotope_page).append($(newArticle));
                 }
                 callback();
 
@@ -210,6 +216,9 @@ $(document).ready(function(){
 
         //Looks like the data's all ready
         if(renderTime()){
+
+            //TODO: Remove splash canvas.
+
             pages.forEach(function(page){
                 initIsotope(page);
                 $(page).isotope('shuffle');

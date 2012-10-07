@@ -7,7 +7,7 @@
 	    <br> 
 	    <div class="date" > on {{date_string}} </div> 
     </h5>
-    <p class="summary"> {{summary}} </p>
-    <p class="content hidden"> {{content}} </p>
+    <p class="summary"> {{{summary}}} </p>
+    <p class="content hidden"> {{{content}}} </p>
 
 </div>
