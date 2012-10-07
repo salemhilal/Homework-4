@@ -101,23 +101,6 @@ a:visited {color: #008000; text-decoration: underline; }
 a:hover {color: #000000; text-decoration: none; }
 
 
-::-webkit-scrollbar              { visibility:hidden }
-::-webkit-scrollbar-button       { visibility:hidden }
-::-webkit-scrollbar-track        { visibility:hidden }
-::-webkit-scrollbar-track-piece  { visibility:hidden }
-::-webkit-scrollbar-thumb        { visibility:hidden }
-::-webkit-scrollbar-corner       { visibility:hidden }
-::-webkit-resizer                { visibility:hidden }
-
-::-moz-scrollbar              { visibility:hidden; }
-::-moz-scrollbar-button       { visibility:hidden; }
-::-moz-scrollbar-track        { visibility:hidden; }
-::-moz-scrollbar-track-piece  { visibility:hidden; }
-::-moz-scrollbar-thumb        { visibility:hidden; }
-::-moz-scrollbar-corner       { visibility:hidden; }
-::-moz-resizer                { visibility:hidden; }
-
-
 /**** Isotope Filtering ****/
 
 .isotope-item {

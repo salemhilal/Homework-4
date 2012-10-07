@@ -2,7 +2,8 @@ $(document).ready(function(){
 
     //Vars
         var rssList = {
-            "#usa":["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/US.xml"],
+            "#usa":["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/US.xml",
+                    "http://fulltextrssfeed.com/rss.cnn.com/rss/cnn_topstories.rss"],
             "#world":["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/World.xml"],
             "#sports":["http://fulltextrssfeed.com/www.nytimes.com/services/xml/rss/nyt/Sports.xml"],
             "#business":["http://fulltextrssfeed.com/feeds.nytimes.com/nyt/rss/Business"],
@@ -126,9 +127,10 @@ $(document).ready(function(){
         $(page).isotope({
             itemSelector :'.article',
             layoutMode : 'masonry',
+            animationEngine : 'jQuery', 
             animationOptions: {
                 duration: 750,
-                easing: 'linear',
+                easing: 'swing',
                 queue: false
             }
         }, function( $items ) {
@@ -206,10 +208,13 @@ $(document).ready(function(){
             return true;
         }
 
+        //Looks like the data's all ready
         if(renderTime()){
             pages.forEach(function(page){
                 initIsotope(page);
+                $(page).isotope('shuffle');
             });
+            clearTimeout(checkIfLoaded);
         }
     }, 100);
 
